@@ -2,7 +2,7 @@ class TrainingDay(object):
     def __init__(self, date, run):
         self.date = date
         self.run = run
-        self.formatted_date = self.date.strftime("%B %d, %Y")
+        self.formatted_date = self.date.strftime("%m/%d/%Y")
         self.weekday_name = self.date.strftime("%A")
         self.weekday_num = self.date.weekday()
 
