@@ -1,0 +1,10 @@
+Django==1.7
+South==1.0.2
+argparse==1.1
+coverage==3.7.1
+django-annoying==0.8.1
+django-zurb-foundation==5.5.0
+future==0.14.3
+python-dateutil==2.4.2
+pytz==2015.2
+six==1.9.0

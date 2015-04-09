@@ -37,8 +37,6 @@ def date(request):
 def datetime_range(race_day, weeks):
     weeks -= 1
     start = race_day - timedelta(weeks=weeks, days=(race_day.weekday()))
-    print(start)
-    print(start.weekday())
     span = (race_day + timedelta(days=1)) - start
     for i in range(span.days):
         yield start + timedelta(days=i)
@@ -49,7 +47,6 @@ def marathon_schedule(race_day, short_run1, short_run2, rest1, rest2, medium_run
     long_run_gen, short_run_gen1, short_run_gen2, medium_run_gen, training_generator = training_generators(race_day)
     training_dict = {'Monday':[], 'Tuesday':[], 'Wednesday':[], 'Thursday':[], 'Friday':[], 'Saturday':[], 'Sunday':[]}
     for date in training_generator:
-        print(date)
         weekday = date.strftime("%A")
         if date == (race_day - timedelta(days=1)) or date == (race_day - timedelta(days=2)):
             rest_day = TrainingDay(date, "Rest")
@@ -71,7 +68,7 @@ def marathon_schedule(race_day, short_run1, short_run2, rest1, rest2, medium_run
         if weekday == long_run:
             training_dict[long_run].append(TrainingDay(date, long_run_gen.__next__()))
         if weekday == cross_train:
-            training_dict[cross_train].append(TrainingDay(date, "Cross Train"))
+            training_dict[cross_train].append(TrainingDay(date, "Cross \nTrain"))
     return training_dict
 
 
