@@ -3,31 +3,37 @@ from django import template
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from .training import TrainingDay
+from .forms import TrainingForm
 from datetime import datetime, timedelta
 
 
 def schedule(request):
     if request.method == 'GET':
-        short_run1 = request.GET['short_run1']
-        short_run2 = request.GET['short_run2']
-        rest1 = request.GET['rest1']
-        rest2 = request.GET['rest2']
-        medium_run = request.GET['medium_run']
-        long_run = request.GET['long_run']
-        cross_train = request.GET['cross_train']
-        race_date = datetime.strptime(request.GET['date'], '%m/%d/%Y')
-        training_dict = marathon_schedule(race_date, short_run1, short_run2, rest1, rest2, medium_run, long_run, cross_train)
-        context = {
-                   'Monday': training_dict['Monday'],
-                   'Tuesday': training_dict['Tuesday'],
-                   'Wednesday': training_dict['Wednesday'],
-                   'Thursday': training_dict['Thursday'],
-                   'Friday': training_dict['Friday'],
-                   'Saturday': training_dict['Saturday'],
-                   'Sunday': training_dict['Sunday'],
-                   'range': range(18)
-                  }
-        return render(request, 'schedule.html', context)
+        form = TrainingForm(request.GET)
+        print(form)
+        if form.is_valid():
+            short_run1 = request.GET['short_run1']
+            short_run2 = request.GET['short_run2']
+            rest1 = request.GET['rest1']
+            rest2 = request.GET['rest2']
+            medium_run = request.GET['medium_run']
+            long_run = request.GET['long_run']
+            cross_train = request.GET['cross_train']
+            race_date = datetime.strptime(request.GET['date'], '%m/%d/%Y')
+            training_dict = marathon_schedule(race_date, short_run1, short_run2, rest1, rest2, medium_run, long_run, cross_train)
+            context = {
+                       'Monday': training_dict['Monday'],
+                       'Tuesday': training_dict['Tuesday'],
+                       'Wednesday': training_dict['Wednesday'],
+                       'Thursday': training_dict['Thursday'],
+                       'Friday': training_dict['Friday'],
+                       'Saturday': training_dict['Saturday'],
+                       'Sunday': training_dict['Sunday'],
+                       'range': range(18)
+                      }
+            return render(request, 'schedule.html', context)
+        else:
+            return render(request, 'date.html')
 
 
 def date(request):

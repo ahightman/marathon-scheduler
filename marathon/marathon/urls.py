@@ -6,5 +6,6 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^schedule/$', schedule),
     url(r'^date/$', date),
+    url(r'^$', date),
     url(r'^admin/', include(admin.site.urls))
 )
