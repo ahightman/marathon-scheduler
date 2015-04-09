@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load app_filters %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Week</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+            <th></th>
+        </tr>
+        <tb>
+        {% for i in range %}
+            <tr>
+                <td>Week {{ i }}</td>
+                <td>{{ Monday|return_date:i }}<br />{{ Monday|return_run:i }}</td>
+                <td>{{ Tuesday|return_date:i }}<br />{{ Tuesday|return_run:i }}</td>
+                <td>{{ Wednesday|return_date:i }}<br />{{ Wednesday|return_run:i }}</td>
+                <td>{{ Thursday|return_date:i }}<br />{{ Thursday|return_run:i }}</td>
+                <td>{{ Friday|return_date:i }}<br />{{ Friday|return_run:i }}</td>
+                <td>{{ Saturday|return_date:i }}<br />{{ Saturday|return_run:i }}</td>
+                <td>{{ Sunday|return_date:i }}<br />{{ Sunday|return_run:i }}</td>
+            </tr>
+        {% endfor %}
+        </tb>
+    </table>
+{% endblock %}

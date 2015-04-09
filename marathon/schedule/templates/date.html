@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <div id="datepicker"></div>
+    <form id="myFormID" action="/schedule/" method="GET">
+        <input type="hidden" name="date" id="hiddenFieldID" value="">
+        <input type="submit" value="Create Schedule"/>
+    </form>
+    <script>
+        $('#datepicker').datepicker({
+            inline : true,
+            altField : '#hiddenFieldID',
+            onSelect : function(){
+                $('#myFormID').submit();
+            }
+        });
+    </script>
+
+{% endblock %}
