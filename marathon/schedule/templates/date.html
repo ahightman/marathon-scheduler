@@ -5,15 +5,100 @@
     <div id="datepicker"></div>
     <form id="myFormID" action="/schedule/" method="GET">
         <input type="hidden" name="date" id="hiddenFieldID" value="">
+        <table>
+        <tr>
+            <th>Activity</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Rest</td>
+            <td><input type="radio" name="rest1" data-col="1" value="Monday"/></td>
+            <td><input type="radio" name="rest1" data-col="2" value="Tuesday"/></td>
+            <td><input type="radio" name="rest1" data-col="3" value="Wednesday"/></td>
+            <td><input type="radio" name="rest1" data-col="4" value="Thursday"/></td>
+            <td><input type="radio" name="rest1" data-col="5" value="Friday"/></td>
+            <td><input type="radio" name="rest1" data-col="6" value="Saturday"/></td>
+            <td><input type="radio" name="rest1" data-col="7" value="Sunday"/></td>
+        </tr>
+        <tr>
+            <td>Short Run 1</td>
+            <td><input type="radio" name="short_run1" data-col="1" value="Monday"/></td>
+            <td><input type="radio" name="short_run1" data-col="2" value="Tuesday"/></td>
+            <td><input type="radio" name="short_run1" data-col="3" value="Wednesday"/></td>
+            <td><input type="radio" name="short_run1" data-col="4" value="Thursday"/></td>
+            <td><input type="radio" name="short_run1" data-col="5" value="Friday"/></td>
+            <td><input type="radio" name="short_run1" data-col="6" value="Saturday"/></td>
+            <td><input type="radio" name="short_run1" data-col="7" value="Sunday"/></td>
+        </tr>
+        <tr>
+            <td>Short Run 2</td>
+            <td><input type="radio" name="short_run2" data-col="1" value="Monday"/></td>
+            <td><input type="radio" name="short_run2" data-col="2" value="Tuesday"/></td>
+            <td><input type="radio" name="short_run2" data-col="3" value="Wednesday"/></td>
+            <td><input type="radio" name="short_run2" data-col="4" value="Thursday"/></td>
+            <td><input type="radio" name="short_run2" data-col="5" value="Friday"/></td>
+            <td><input type="radio" name="short_run2" data-col="6" value="Saturday"/></td>
+            <td><input type="radio" name="short_run2" data-col="7" value="Sunday"/></td>
+        </tr>
+        <tr>
+            <td>Rest</td>
+            <td><input type="radio" name="rest2" data-col="1" value="Monday"/></td>
+            <td><input type="radio" name="rest2" data-col="2" value="Tuesday"/></td>
+            <td><input type="radio" name="rest2" data-col="3" value="Wednesday"/></td>
+            <td><input type="radio" name="rest2" data-col="4" value="Thursday"/></td>
+            <td><input type="radio" name="rest2" data-col="5" value="Friday"/></td>
+            <td><input type="radio" name="rest2" data-col="6" value="Saturday"/></td>
+            <td><input type="radio" name="rest2" data-col="7" value="Sunday"/></td>
+        </tr>
+        <tr>
+            <td>Cross Train</td>
+            <td><input type="radio" name="cross_train" data-col="1" value="Monday"/></td>
+            <td><input type="radio" name="cross_train" data-col="2" value="Tuesday"/></td>
+            <td><input type="radio" name="cross_train" data-col="3" value="Wednesday"/></td>
+            <td><input type="radio" name="cross_train" data-col="4" value="Thursday"/></td>
+            <td><input type="radio" name="cross_train" data-col="5" value="Friday"/></td>
+            <td><input type="radio" name="cross_train" data-col="6" value="Saturday"/></td>
+            <td><input type="radio" name="cross_train" data-col="7" value="Sunday"/></td>
+        </tr>
+        <tr>
+            <td>Medium Run</td>
+            <td><input type="radio" name="medium_run" data-col="1" value="Monday"/></td>
+            <td><input type="radio" name="medium_run" data-col="2" value="Tuesday"/></td>
+            <td><input type="radio" name="medium_run" data-col="3" value="Wednesday"/></td>
+            <td><input type="radio" name="medium_run" data-col="4" value="Thursday"/></td>
+            <td><input type="radio" name="medium_run" data-col="5" value="Friday"/></td>
+            <td><input type="radio" name="medium_run" data-col="6" value="Saturday"/></td>
+            <td><input type="radio" name="medium_run" data-col="7" value="Sunday"/></td>
+        </tr>
+        <tr>
+            <td>Long Run</td>
+            <td><input type="radio" name="long_run" data-col="1" value="Monday"/></td>
+            <td><input type="radio" name="long_run" data-col="2" value="Tuesday"/></td>
+            <td><input type="radio" name="long_run" data-col="3" value="Wednesday"/></td>
+            <td><input type="radio" name="long_run" data-col="4" value="Thursday"/></td>
+            <td><input type="radio" name="long_run" data-col="5" value="Friday"/></td>
+            <td><input type="radio" name="long_run" data-col="6" value="Saturday"/></td>
+            <td><input type="radio" name="long_run" data-col="7" value="Sunday"/></td>
+        </tr>
         <input type="submit" value="Create Schedule"/>
     </form>
     <script>
         $('#datepicker').datepicker({
             inline : true,
             altField : '#hiddenFieldID',
-            onSelect : function(){
-                $('#myFormID').submit();
-            }
+        });
+        $("input[type=radio]").click(function() {
+           el = $(this);
+           col = el.data("col");
+           $("input[data-col=" + col + "]").prop("checked", false);
+           el.prop("checked", true);
         });
     </script>
 

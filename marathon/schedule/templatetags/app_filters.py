@@ -20,12 +20,16 @@ def return_weekday(l, i):
 def return_run(l, i):
     try:
         return l[i].run
-    except:
-        return None
+    except IndexError:
+        return ""
 
 @register.filter
 def return_date(l, i):
     try:
         return l[i].formatted_date
-    except:
-        return None
+    except IndexError:
+        return ""
+
+@register.filter
+def plus_one(i):
+    return i + 1

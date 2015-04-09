@@ -17,7 +17,7 @@
         <tb>
         {% for i in range %}
             <tr>
-                <td>Week {{ i }}</td>
+                <td>Week {{ i|plus_one }}</td>
                 <td>{{ Monday|return_date:i }}<br />{{ Monday|return_run:i }}</td>
                 <td>{{ Tuesday|return_date:i }}<br />{{ Tuesday|return_run:i }}</td>
                 <td>{{ Wednesday|return_date:i }}<br />{{ Wednesday|return_run:i }}</td>
